@@ -18,6 +18,16 @@
         "types": "./types/index.d.ts",
         "default": "./dist/index.js"
       }
+    },
+    "./init": {
+      "import": {
+        "types": "./types/init.d.ts",
+        "default": "./dist/init.mjs"
+      },
+      "require": {
+        "types": "./types/init.d.ts",
+        "default": "./dist/init.js"
+      }
     }
   },
   "repository": "git@github.com:zh-lx/code-inspector.git",

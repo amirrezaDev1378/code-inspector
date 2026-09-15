@@ -4,7 +4,10 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     lib: {
-      entry: ['src/index.ts'],
+      entry: {
+        index: 'src/index.ts',
+        init: 'src/init.ts',
+      },
       formats: ['es', 'cjs'],
       fileName: '[name]',
       name: 'viteInspectorCore',
