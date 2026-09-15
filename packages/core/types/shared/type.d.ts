@@ -333,6 +333,11 @@ export type CodeOptions = {
      */
     hotKeys?: HotKey[] | false;
     /**
+     * @cn 是否自动将客户端代码注入到 DOM 中。默认值为 `true`。如果设置为 `false`，则需要手动导入并调用 `initCodeInspector` 来初始化。
+     * @en Whether to automatically inject the client code into the DOM. Default value is `true`. If set to `false`, you need to manually import and call `initCodeInspector` to initialize.
+     */
+    autoInject?: boolean;
+    /**
      * @cn 是否在页面展示功能开关按钮
      * @en Whether show the switch button of this function on the page
      */
