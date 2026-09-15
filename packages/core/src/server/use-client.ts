@@ -167,6 +167,7 @@ export function getWebComponentCode(options: CodeOptions, port: number) {
     ip = false,
     bundler,
     modeKey = 'z',
+    autoInject = true,
   } = options || ({} as CodeOptions);
   const {
     locate = true,
@@ -185,8 +186,7 @@ export function getWebComponentCode(options: CodeOptions, port: number) {
   ].filter(Boolean).length;
   const multiSelect =
     Array.isArray(defaultAction) || availableBehaviorCount > 1;
-  return `
-;(function (){
+  const body = `
   if (typeof window !== 'undefined') {
     if (!document.documentElement.querySelector('code-inspector-component')) {
       ${
@@ -214,8 +214,11 @@ export function getWebComponentCode(options: CodeOptions, port: number) {
       document.documentElement.append(inspector);
     }
   }
-})();
 `;
+  if (autoInject === false) {
+    return `;window.__code_inspector_init = function() { ${body} };`;
+  }
+  return `;(function (){ ${body} })();`;
 }
 
 export function getEliminateWarningCode() {
